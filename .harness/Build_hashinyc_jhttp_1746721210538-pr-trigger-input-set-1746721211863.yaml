@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_hashinyc_jhttp_1746721210538-pr-trigger-input-set
+  identifier: Build_hashinyc_jhttp_1746721210538prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: CI_Pipeline
+  pipeline:
+    identifier: Build_hashinyc_jhttp_1746721210538
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
