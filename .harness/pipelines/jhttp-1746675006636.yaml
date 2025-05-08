@@ -27,17 +27,16 @@ pipeline:
                   timeout: ""
                   type: Run
               - step:
-                  identifier: dockerbuild
-                  name: docker_build
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_2
+                  identifier: BuildAndPushDockerRegistry_2
                   spec:
-                    connectorRef: <+input>
+                    connectorRef: account.DockerHub
                     repo: jhttp
                     tags:
                       - latest
-                    caching: true
+                    caching: false
                     dockerfile: Dockerfile
-                  timeout: ""
-                  type: BuildAndPushDockerRegistry
           platform:
             os: Linux
             arch: Amd64
