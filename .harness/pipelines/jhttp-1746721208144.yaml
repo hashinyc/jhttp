@@ -39,3 +39,31 @@ pipeline:
                       echo "Welcome to Harness CI"
                       mvn -B package --file pom.xml
                   timeout: 10m
+    - stage:
+        name: docker build
+        identifier: docker_build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: false
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: account.DockerHub
+                    repo: jhttp
+                    tags:
+                      - latest
+                    dockerfile: Dockerfile
