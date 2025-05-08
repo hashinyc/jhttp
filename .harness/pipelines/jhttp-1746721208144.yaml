@@ -63,7 +63,7 @@ pipeline:
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
                     connectorRef: account.DockerHub
-                    repo: jhttp
+                    repo: baiyun/jhttp
                     tags:
-                      - latest
+                      - <+pipeline.sequenceId>
                     dockerfile: Dockerfile
