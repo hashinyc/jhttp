@@ -6,41 +6,36 @@ pipeline:
   properties:
     ci:
       codebase:
-        build: <+input>
         connectorRef: account.Github_OAuth_1746652796717
         repoName: hashinyc/jhttp
+        build:
+          type: branch
+          spec:
+            branch: main
   stages:
     - stage:
         identifier: build
         name: build
+        type: CI
         spec:
+          cloneCodebase: true
           caching:
             enabled: true
-          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
           execution:
             steps:
               - step:
-                  identifier: echo
-                  name: echo
-                  spec:
-                    command: echo hello world
-                  timeout: ""
+                  identifier: build_java_app
+                  name: Build Java App
                   type: Run
-              - step:
-                  identifier: dockerbuild
-                  name: docker_build
                   spec:
-                    caching: true
-                    connectorRef: <+input>
-                    repo: hello/world
-                    tags:
-                      - latest
-                  timeout: ""
-                  type: BuildAndPushDockerRegistry
-          platform:
-            arch: Amd64
-            os: Linux
-          runtime:
-            spec: {}
-            type: Cloud
-        type: CI
+                    shell: Sh
+                    command: |-
+                      echo "Welcome to Harness CI"
+                      mvn -B package --file pom.xml
+                  timeout: 10m
