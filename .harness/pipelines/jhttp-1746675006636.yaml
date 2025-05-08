@@ -30,11 +30,12 @@ pipeline:
                   identifier: dockerbuild
                   name: docker_build
                   spec:
-                    caching: true
                     connectorRef: <+input>
-                    repo: hello/world
+                    repo: jhttp
                     tags:
                       - latest
+                    caching: true
+                    dockerfile: Dockerfile
                   timeout: ""
                   type: BuildAndPushDockerRegistry
           platform:
