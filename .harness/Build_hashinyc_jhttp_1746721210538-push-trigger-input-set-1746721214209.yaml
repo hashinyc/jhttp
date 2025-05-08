@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_hashinyc_jhttp_1746721210538-push-trigger-input-set
+  identifier: Build_hashinyc_jhttp_1746721210538pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: CI_Pipeline
+  pipeline:
+    identifier: Build_hashinyc_jhttp_1746721210538
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
